@@ -3,4 +3,4 @@ from django.shortcuts import redirect, render
 
 def homepage(request):
     
-    return render(request, 'screen/index.html')
+    return render(request, 'page/index.html')

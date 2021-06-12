@@ -22,7 +22,7 @@ from shop.views.homepage import homepage
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    # screen
+    # page
     path('',homepage,name = 'home'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
