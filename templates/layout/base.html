@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+
+  <!-- pluginCSS-->
+
+  <!-- css file -->
+  <link rel="stylesheet" href="{%static 'blog/css/css/style.css'%}">
+  <link rel="stylesheet" href="{%static 'blog/css/bootstrap.min.css'%}">
+
+  <!-- javascript file -->
+
+  <!-- pluginJS -->
+ 
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+ 
+  <title>{%block title_page %}My shop{% endblock %}</title>
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+  <!-- {%include "layout/header.html"%} -->
+
+<div class="container-fluid container-content ">
+    {% block content %}
+
+  {% endblock %}
+
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'blog/js/plugin/jquery.skitter.min.js' %}"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="{% static 'blog/js/applications.js' %}" type="text/javascript"></script>
+  <script src="{%static 'blog/js/bootstrap.min.js'%}"></script>
+</body>
+<!-- {%include "layout/footer.html"%} -->
+
+</html>
