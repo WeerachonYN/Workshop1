@@ -1,15 +1,13 @@
 from django.http import request
 from django.shortcuts import redirect, render
+from shop.models.Contact import Contact
 from shop.models.Category import Category
-from shop.models.Product import Product
-
-
-def homepage(request):
+def contact(request):
+    contacts  =  Contact.objects.filter(is_enabled=True)
     category  =  Category.objects.filter(is_activate = True)
-    products = Product.objects.filter(is_activate = True)
-    context = {
-        'products':products,
-        'category':category,
 
+    context = {
+        'contacts':contacts,
+        'category':category,
     }
-    return render(request, 'page/index.html',context)
+    return render(request, 'page/contact.html',context)
