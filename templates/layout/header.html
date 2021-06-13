@@ -19,15 +19,11 @@
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
               {%for i in category %}
-
               <li><a class="dropdown-item" href="{% url 'category' pk=i.pk %}">{{i.name}}</a></li>
-
-
               {% endfor %}
               <!-- <li>
                 <hr class="dropdown-divider">
               </li> -->
-
             </ul>
           </div>
         </li>
@@ -35,8 +31,8 @@
         <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">About</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'category_search' %}">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
       </form>
 
 

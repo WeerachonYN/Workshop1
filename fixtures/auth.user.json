@@ -3,16 +3,16 @@
         "model": "auth.user",
         "pk": 1,
         "fields": {
-            "password": "pbkdf2_sha256$260000$sxhSD9QFThFNFTagBzCztr$Ms7nie4AGTgK80+HzrDBfaUtmhmy+IcdJQFbtrCQpe4=",
-            "last_login": null,
+            "password": "pbkdf2_sha256$260000$SEirdLUlwNSMhXCYsHkiUz$0eQYfz0wiERtZEbBP8nAtzxeBj4H+6E+7G944ndSl64=",
+            "last_login": "2021-06-13T15:01:31.816Z",
             "is_superuser": true,
             "username": "admin",
             "first_name": "",
             "last_name": "",
-            "email": "chon@gmail.com",
+            "email": "admin@gmail.com",
             "is_staff": true,
             "is_active": true,
-            "date_joined": "2021-06-13T08:26:19.034Z",
+            "date_joined": "2021-06-13T14:56:57.802Z",
             "groups": [],
             "user_permissions": []
         }

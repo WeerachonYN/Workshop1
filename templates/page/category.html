@@ -1,32 +1,65 @@
-{%extends  'layout/base.html'%}
- {%block title_page %}
-    {%for i in title%}{{i.name}} - METRO STORE{%endfor%}
+{%extends 'layout/base.html'%}
+{%block title_page %}
+{%if title%}{%for i in title%}{{i.name}} - METRO STORE{%endfor%} {%else%} ProductAll - METRO STORE {%endif%}
 {%endblock%}
 {%block content%}
 
 <div class="row">
     <div class="col-lg-2 md-3 sm-12">
 
-        
+
     </div>
     <div class="col-lg-10 md-3 sm-2">
+        <div class="container">
+
+            <div class="shadow-none p-2 mb-2 bg-light rounded">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="row justify-content-between ">
+                <div class="col-4 p-3">
+                    ค้นหา: {{search_post}}
+                </div>
+                <div class="col-4 p-3" style="text-align: end;">
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort:
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item"  href="#"name="desc">มากไปน้อย</a></li>
+                            <li><a class="dropdown-item"  href="#"name="asc" >น้อยไปมาก</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="row row-cols-1 row-cols-md-4 g-4">
                 {% for list_product in list_product %}
                 <div class="col">
-                  <div class="card h-100" style="width: 18rem;">
-                    <img src="#" class="card-img-top" >
-                    <div class="card-body">
-                      <h5 class="card-title">{{list_product.name}}e</h5>
-                      <p class="card-text">{{list_product.detail}}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{list_product.image_pro.url}}" class="card-img-top" id="image_card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{list_product.name}}e</h5>
+                            <p class="card-text">{{list_product.detail}}</p>
+                            <a href="{%url 'product' pk=list_product.pk%}" class="btn btn-md btn-primary">View</a>
+                        </div>
+                        <!-- <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div> -->
                     </div>
-                    <!-- <div class="card-footer">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </div> -->
-                  </div>
                 </div>
                 {%endfor%}
-              </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- {%include 'layout/slider.html'%} -->

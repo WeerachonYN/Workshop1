@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from shop.views.homepage import homepage
 from shop.views.category import category
+from shop.views.category import search_category
 from shop.views.product import product
 from shop.views.contact import contact
 from shop.views.about import about
@@ -31,7 +32,8 @@ urlpatterns = [
     # page
     path('',homepage,name = 'home'),
     path('category/<int:pk>',category,name='category'),
-    path('product',product,name='product'),
+    path('category',search_category,name='category_search'),
+    path('product/<int:pk>',product,name='product'),
     path('contact',contact,name='contact'),
     path('about',about,name='about'),
 ]   
