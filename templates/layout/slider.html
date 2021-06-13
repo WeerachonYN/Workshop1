@@ -1,12 +1,12 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    {% for i in category %}
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true" aria-label="Slide 1"></button>
+    {%endfor%}
   </div>
   <div class="carousel-inner">
     {% for i in category %}
-    <div class="carousel-item active">
+    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
       <img src="{{i.image.url }}" class="d-block w-100">
     </div>
     {%endfor%}
