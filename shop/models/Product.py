@@ -7,8 +7,10 @@ class Product(models.Model):
     detail = models.CharField(max_length=225)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,related_name= 'products',default=None,null=True)
     price = models.IntegerField()
+
     is_recomment = models.BooleanField(default=True)
     is_activate = models.BooleanField(default=True)
+    image_pro = models.ImageField(upload_to='images/product',max_length=900, default=None)
 
     created_datetime = models.DateTimeField(auto_now=True)
     updated_datetime = models.DateTimeField(default=None,null=True)

@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin', admin.site.urls),
     # page
     path('',homepage,name = 'home'),
-    path('category',category,name='category'),
+    path('category/<int:pk>',category,name='category'),
     path('product',product,name='product'),
     path('contact',contact,name='contact'),
     path('about',about,name='about'),

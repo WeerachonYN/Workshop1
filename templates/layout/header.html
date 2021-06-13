@@ -20,7 +20,7 @@
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
               {%for i in category %}
 
-              <li><a class="dropdown-item" href="#">{{i.name}}</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' pk=i.pk %}">{{i.name}}</a></li>
 
 
               {% endfor %}

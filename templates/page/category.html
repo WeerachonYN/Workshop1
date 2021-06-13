@@ -1,9 +1,34 @@
 {%extends  'layout/base.html'%}
+ {%block title_page %}
+    {%for i in title%}{{i.name}} - METRO STORE{%endfor%}
+{%endblock%}
 {%block content%}
 
+<div class="row">
+    <div class="col-lg-2 md-3 sm-12">
 
-
-
+        
+    </div>
+    <div class="col-lg-10 md-3 sm-2">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                {% for list_product in list_product %}
+                <div class="col">
+                  <div class="card h-100" style="width: 18rem;">
+                    <img src="#" class="card-img-top" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{list_product.name}}e</h5>
+                      <p class="card-text">{{list_product.detail}}</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                    <!-- <div class="card-footer">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                    </div> -->
+                  </div>
+                </div>
+                {%endfor%}
+              </div>
+    </div>
+</div>
 <!-- {%include 'layout/slider.html'%} -->
 
 {%endblock %}
