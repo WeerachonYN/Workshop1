@@ -1,11 +1,17 @@
 from django.contrib import admin
+from django.db import models
 from shop.models.Product import Product
 from shop.models.Category import Category
 from shop.models.Contact import Contact
 from shop.models.ImageProduct import ImageProduct
 # Register your models here.
+class ImageProductAdmins(admin.StackedInline):
+    model = ImageProduct
 
 class ProductAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Product
+    inlines = [ImageProductAdmins]
     list_display = (
         'name',
         'category',
@@ -63,6 +69,11 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 admin.site.register(Category,CategoryAdmin)
 
+# class ImageProductAdmin(admin.StackedInline):
+  
+#     model:ImageProduct
+
+# @admin.register(ImageProductAdmin)
 class ImageProductAdmin(admin.ModelAdmin):
     list_display = (
         'product',

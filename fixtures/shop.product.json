@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "model": "shop.product",
+        "pk": 1,
+        "fields": {
+            "name": "Jean",
+            "detail": "Fasion",
+            "category": 1,
+            "price": 1900,
+            "is_recomment": true,
+            "is_activate": true,
+            "created_datetime": "2021-06-13T13:00:47.163Z",
+            "updated_datetime": "2021-06-13T20:00:47.162Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 2,
+        "fields": {
+            "name": "shoe",
+            "detail": "Fasion",
+            "category": 1,
+            "price": 450,
+            "is_recomment": true,
+            "is_activate": true,
+            "created_datetime": "2021-06-13T13:25:02.821Z",
+            "updated_datetime": "2021-06-13T20:25:02.821Z"
+        }
+    }
+]
