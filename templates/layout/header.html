@@ -8,7 +8,7 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Clothing Store</a></li>
+        <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">METRO STORE</a></li>
         <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Home</a></li>
         <li>
           <div class="dropdown text-end">
@@ -18,12 +18,16 @@
               Category
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              {%for i in category %}
-              <li><a class="dropdown-item" href="{% url 'category' pk=i.pk %}">{{i.name}}</a></li>
-              {% endfor %}
-              <!-- <li>
+              <li>
+                <a href="{%url 'category-list'%}" class="dropdown-item">ProductAll</a>
+            </li>
+              <li>
                 <hr class="dropdown-divider">
-              </li> -->
+            </li>
+              {%for i in category %}
+              <li><a class="dropdown-item" href="{% url 'category-filter' pk=i.pk%}">{{i.name}}</a></li>
+              {% endfor %}
+             
             </ul>
           </div>
         </li>
@@ -31,8 +35,9 @@
         <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">About</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'category_search' %}">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{%url 'category-list' %}">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="search">
+       
       </form>
 
 

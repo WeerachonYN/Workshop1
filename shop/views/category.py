@@ -4,38 +4,41 @@ from shop.models.Category import Category
 from shop.models.Product import Product
 from django.db.models import Q
 
-def category(request,pk):
+def category(request):
     category  =  Category.objects.filter(is_activate = True)
-    if pk is not None:
-        list_product = Product.objects.filter(is_activate = True ).filter(category = pk)
-        title  =  Category.objects.filter(is_activate = True).filter(pk=pk)
-      
+    list_products = Product.objects.filter(is_activate = True )
+    
+    # search  
+    search_post = request.GET.get('search')
+    if search_post:
+        list_products = list_products.filter(Q(name__icontains=search_post))
+    # sort
+    sort = request.GET.get('sort','asc')
+    if sort == 'desc':
+       list_product = list_products.order_by('-price')
     else:
-        list_product = Product.objects.filter(is_activate = True )
-     
-   
-      
-       
+       list_product = list_products.order_by('price')
     context = {
         'category':category,
         'list_product':list_product,
-        'title':title
+         'search_post':search_post,
+         'sort':sort,
         }
    
     return render(request, 'page/category.html',context)
 
-def search_category(request):
-    category  =  Category.objects.filter(is_activate = True)
-    list_product = Product.objects.filter(is_activate = True).order_by("-created_datetime")
-
-    search_post = request.GET.get('word')
-    if search_post:
-        list_product = list_product.filter(Q(name__icontains=search_post))
-  
+def categoryFilter(request,pk):
+    category = Category.objects.filter(is_activate=True)
+    list_product = Product.objects.filter(is_activate = True ).filter(category = pk)
+    title  =  category.get(pk=pk)
+    # counter = Product.objects.filter(is_activate=True).filter()
+    # (category__id=category)
+   
     context = {
-         'category':category,
+        'category':category,
         'list_product':list_product,
-        'search_post':search_post,
+        'title':title,
+        # 'counter':counter,
         }
-            
+   
     return render(request, 'page/category.html',context)

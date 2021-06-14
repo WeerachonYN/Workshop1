@@ -6,9 +6,9 @@ from shop.models.Product import Product
 
 def homepage(request):
     category  =  Category.objects.filter(is_activate = True)
-    products = Product.objects.filter(is_activate = True)
+    list_products = Product.objects.filter(is_activate = True)
     context = {
-        'products':products,
+        'list_products':list_products,
         'category':category,
 
     }

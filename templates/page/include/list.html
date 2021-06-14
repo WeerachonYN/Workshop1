@@ -1,0 +1,24 @@
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+            
+
+{% for list_product in list_product %}
+ <!-- Tab panes -->
+
+<div class="col">
+    <div class="card h-100" style="width: 18rem;">
+        <img src="{{list_product.image_pro.url}}" class="card-img-top " id="image_card">
+        <div class="card-body">
+            <h5 class="card-title">{{list_product.price}} บาท</h5>
+            <h5 class="card-title">{{list_product.name}}</h5>
+            <p class="card-text">{{list_product.detail}}</p>
+            <a href="{%url 'product' pk=list_product.pk%}" class="btn btn-md btn-primary">View</a>
+        </div>
+        <!-- <div class="card-footer">
+  <small class="text-muted">Last updated 3 mins ago</small>
+</div> -->
+    </div>
+</div>
+
+{%endfor%}
+</div>

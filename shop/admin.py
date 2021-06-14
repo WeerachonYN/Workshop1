@@ -11,7 +11,7 @@ class ImageProductAdmins(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     class Meta:
         model = Product
-    inlines = [ImageProductAdmins]
+    inlines = [ ImageProductAdmins]
     list_display = (
         'name',
         'category',
@@ -21,6 +21,7 @@ class ProductAdmin(admin.ModelAdmin):
         'updated_datetime',
         'is_recomment',
         'is_activate',
+        'image_pro',
     )
     list_editable = (
         'is_activate',
