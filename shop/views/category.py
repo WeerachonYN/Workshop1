@@ -30,12 +30,13 @@ def category(request):
         list_product = paginator.page(1)
     except EmptyPage:
         list_product = paginator.page(paginator.num_pages)
-
+   
     context = {
         'category':category,
         'list_product':list_product,
          'search_post':search_post,
          'sort':sort,
+         'page':page,
         }
    
     return render(request, 'page/category.html',context)
@@ -56,11 +57,14 @@ def categoryFilter(request,pk):
         list_product = paginator.page(1)
     except EmptyPage:
         list_product = paginator.page(paginator.num_pages)
+    # pages=list_product.paginator.page_range
 
+    print(page)
     context = {
         'category':category,
         'list_product':list_product,
         'title':title,
+        'page':page,
         # 'counter':counter,
         }
    

@@ -4,10 +4,10 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true" aria-label="Slide 1"></button>
     {%endfor%}
   </div>
-  <div class="carousel-inner">
+  <div class="carousel-inner ">
     {% for i in images %}
     <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
-      <img src="{{i.images.url }}" class="d-block w-100">
+      <img src="{{i.images.url }}" class="d-block w-100 ">
     </div>
     {%endfor%}
   </div>

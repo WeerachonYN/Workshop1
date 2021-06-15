@@ -26,6 +26,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = (
         'is_activate',
         'is_recomment',
+        'detail',
+        'price'
     )
     list_filter = (
         'category',
@@ -35,8 +37,8 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = (
         'name',
     )
-    list_per_page=3
-    list_editable=['detail','price']
+    list_per_page=6
+
 admin.site.register(Product,ProductAdmin)
 
 class ContactAdmin(admin.ModelAdmin):
@@ -67,12 +69,14 @@ class CategoryAdmin(admin.ModelAdmin):
     )
     list_editable = (
         'is_activate',
+        'detail',
+        'image'
     )
     list_filter = (
         'name',
         'is_activate'
     )
-    list_editable=['detail','image']
+   
 admin.site.register(Category,CategoryAdmin)
 
 # class ImageProductAdmin(admin.StackedInline):

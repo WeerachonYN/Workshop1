@@ -9,6 +9,7 @@ def product(request,pk,cat_id):
     images = ImageProduct.objects.filter(product=pk)
     category  =  Category.objects.filter(is_activate = True)
     title  =  category.get(name=products.category)
+    recomment = Product.objects.filter(is_activate=True).filter(is_recomment=True).order_by('price')
     # link_breadcromb = category.filter(pk = pk.category)
 
     context = {
@@ -16,6 +17,7 @@ def product(request,pk,cat_id):
         'category':category,
         'images':images,
         'title':title,
+        'list_product':recomment,
     }
     # print(link_breadcromb)
     print(products)
