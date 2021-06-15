@@ -8,7 +8,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a style="text-decoration: none;" href="{% url 'home' %}">Home</a></li>
                 <li class="breadcrumb-item "><a style="text-decoration: none;" href="#">{{title.name}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> {{title.name}}</li>
+                <li class="breadcrumb-item active" aria-current="page"> {{products.name}}</li>
             </ol>
         </nav>
     </div>
@@ -21,15 +21,15 @@
           
             <div class="col-md-12">
                 <div class="col-4 align-self-center">
-                    <h2>{{title.name}}</h2>
+                    <h2>{{products.name}}</h2>
                 </div>
                 <div class="col-4 align-self-center">
-                    <h4>{{title.price}} บาท</h2>
+                    <h4>{{products.price}} บาท</h2>
                 </div>
             
                 <div class="col-4 align-self-center">
                     <h4>Detail</h4>
-                    <p>{{title.detail}}</p>
+                    <p>{{products.detail}}</p>
                 </div>
 
 

@@ -39,9 +39,10 @@ admin.site.register(Product,ProductAdmin)
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
-        'name',
-        'product',
-        'message',
+        'email',
+        'first_name',
+        'last_name',
+        'messages',
         'datetime',
         'is_enabled',
     )
@@ -49,7 +50,7 @@ class ContactAdmin(admin.ModelAdmin):
         'is_enabled',
     )
     list_filter = (
-        'name',
+        'user',
         'is_enabled'
     )
 admin.site.register(Contact,ContactAdmin)

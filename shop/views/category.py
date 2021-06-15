@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from shop.models.Category import Category
 from shop.models.Product import Product
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 def category(request):
     category  =  Category.objects.filter(is_activate = True)
@@ -18,6 +20,17 @@ def category(request):
        list_product = list_products.order_by('-price')
     else:
        list_product = list_products.order_by('price')
+
+    #  pagination
+    paginator = Paginator(list_product, 6)
+    page = request.GET.get('page')
+    try:
+        list_product = paginator.page(page)
+    except PageNotAnInteger:
+        list_product = paginator.page(1)
+    except EmptyPage:
+        list_product = paginator.page(paginator.num_pages)
+
     context = {
         'category':category,
         'list_product':list_product,
@@ -34,6 +47,16 @@ def categoryFilter(request,pk):
     # counter = Product.objects.filter(is_activate=True).filter()
     # (category__id=category)
    
+   #  pagination
+    paginator = Paginator(list_product, 6)
+    page = request.GET.get('page')
+    try:
+        list_product = paginator.page(page)
+    except PageNotAnInteger:
+        list_product = paginator.page(1)
+    except EmptyPage:
+        list_product = paginator.page(paginator.num_pages)
+
     context = {
         'category':category,
         'list_product':list_product,

@@ -51,7 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'workshop1.urls'
-APPEND_SLASH=False
+APPEND_SLASH = False
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -122,4 +122,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATICFILES_DIRS = [BASE_DIR, 'static']
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+GOOGLE_RECAPTCHA_SECRET_KEY="6LfbGTQbAAAAAGvfQUeTlRupv9JYDg-KGvbu1DCY"
+RECAPTCHA_SITE_KEY = "6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm"
+RECAPTCHA_SECRET_KEY = "6LfbGTQbAAAAAGvfQUeTlRupv9JYDg-KGvbu1DCY"

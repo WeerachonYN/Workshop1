@@ -44,7 +44,9 @@
   <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
   <script  type="text/javascript" src="{% static 'shop/js/plugin/jquery-3.6.0.min.js'%}"></script>
   <script  type="text/javascript" src="{% static 'shop/js/plugin/bootstrap.bundle.min.js'%}"></script>
-  <script src="{% static 'shop/js/app/applications.js' %}" type="text/javascript"></script>
+ {%block js%} <script src="{% static 'shop/js/app/list_onclick.js' %}" type="text/javascript"></script>{%endblock%}
+ {%block recapcha%}    <script src='https://www.google.com/recaptcha/api.js'></script> {%endblock%}
+
 
 
 </body>

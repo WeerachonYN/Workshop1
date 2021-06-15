@@ -8,13 +8,14 @@ def product(request,pk):
     products  =  Product.objects.get(pk=pk)
     images = ImageProduct.objects.filter(product=pk)
     category  =  Category.objects.filter(is_activate = True)
-    title  =  products
+    title  =  category.get(pk=pk)
     # link_breadcromb = category.filter(pk = pk.category)
 
     context = {
         'products':products,
         'category':category,
         'images':images,
+        'title':title,
     }
     # print(link_breadcromb)
     print(products)
