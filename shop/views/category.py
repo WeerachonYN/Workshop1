@@ -11,7 +11,7 @@ def category(request):
     list_products = Product.objects.filter(is_activate = True )
     
     # search  
-    search_post = request.GET.get('search')
+    search_post = request.GET.get('search','')
     if search_post:
         list_products = list_products.filter(Q(name__icontains=search_post))
     # sort

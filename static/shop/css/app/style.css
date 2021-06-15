@@ -1,3 +1,6 @@
+body{
+  margin-bottom:50px;
+}
 /* header */
 
   
@@ -87,18 +90,24 @@
 .carousel-inner .carousel-item-left {
     transform: translateX(0);
 }
-  #h1-test{
-      color:blue;
-  }
+  
 /* body  */
 .container-content{
     min-height:50em;
   }
 
   .footer{
+    /* position: fixed;
+    height: 50px;
+    background-color: red;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px; */
     text-align: center;
   }
 
 /* .image_card{
   height: 100px;
 } */
+

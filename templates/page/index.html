@@ -3,15 +3,43 @@
 {%block content%}
 <!-- {%include 'layout/slider.html'%} -->
 
-<div class="row">
-    <div class="col col-lg-2">
+<div class="row mt-5">
+    <div class="col-2">
 
         
     </div>
-    <div class="col col-lg-10">
+    <div class="col-10">
         {%include "page/include/list.html"%}
+        <div class="shadow p-2 mb-3 bg-dark text-white rounded  ">
+            <h3>Category All</h3>
+        </div>
+ 
+<div class="row row-cols-1 row-cols-1 row-cols-md-3  row-cols-lg-4 g-4">
+            
 
+    {% for list in category %}
+     <!-- Tab panes -->
+    
+    <div class="col">
+        <div class="card h-100" style="width: 18rem;">
+            <img src="{{list.image.url}}" class="card-img-top " id="image_card">
+            <div class="card-body">
+                <!-- <h5 class="card-title">{{list.price}} บาท</h5> -->
+                <h5 class="card-title">{{list.name}}</h5>
+                <p class="card-text">{{list.detail}}</p>
+                <a href="#" class="btn btn-md btn-primary">View</a>
+            </div>
+            <!-- <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div> -->
+        </div>
     </div>
+    
+    {%endfor%}
+    </div>
+   
+
+  
 </div>
 
 {%endblock %}

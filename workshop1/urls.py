@@ -34,7 +34,7 @@ urlpatterns = [
     path('category',category,name='category-list'),
     path('category/<int:pk>',categoryFilter,name='category-filter'),
     # path('category',search_category,name='category_search'),
-    path('product/<int:pk>',product,name='product'),
+    path('product/<int:cat_id>/<int:pk>',product,name='product'),
     path('contact',contact,name='contact'),
     path('about',about,name='about'),
 ]   

@@ -5,7 +5,7 @@ from shop.models.Product import Product
 
 
 def homepage(request):
-    category  =  Category.objects.filter(is_activate = True)
+    category  =  Category.objects.filter(is_activate = True).order_by('name')
     list_products = Product.objects.filter(is_activate = True)
     context = {
         'list_products':list_products,

@@ -17,7 +17,7 @@
             <div class="shadow-none p-2 mb-2 bg-light rounded">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a style="text-decoration:none; color: black;"
+                        <li class="breadcrumb-item"><a style="text-decoration:none;"
                                 href="{%url 'home'%}">Home</a></li>
                         {%if title%}
                        
@@ -51,6 +51,4 @@
     {%include 'layout/pagination.html'%}
 </div>
 <!-- {%include 'layout/slider.html'%} -->
-
 {%endblock %}
- {%block js%} <script src="{% static 'shop/js/app/list_onclick.js' %}" type="text/javascript"></script>{%endblock%}

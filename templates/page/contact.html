@@ -9,6 +9,18 @@
 
     </div>
     <div class="col-8">
+      <div class="shadow-none p-2 mb-2 bg-light rounded">
+        
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration:none; "
+                        href="{%url 'home'%}">Home</a></li>
+              
+                <li class="breadcrumb-item active" aria-current="page"> Contact</li>
+              
+            </ol>
+        </nav>
+    </div>
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}" role="alert">
