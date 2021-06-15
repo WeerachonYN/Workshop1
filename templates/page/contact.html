@@ -5,69 +5,73 @@
 
 <!-- {%include 'layout/slider.html'%} -->
 <div class="row">
-    <div class="col-2">
+  <div class="col-2">
 
+  </div>
+  <div class="col-8">
+    <div class="shadow-none p-2 mb-2 bg-light rounded">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a id="tage-a" href="{%url 'home'%}">Home</a></li>
+
+          <li class="breadcrumb-item active" aria-current="page"> Contact</li>
+
+        </ol>
+      </nav>
     </div>
-    <div class="col-8">
-      <div class="shadow-none p-2 mb-2 bg-light rounded">
-        
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a style="text-decoration:none; "
-                        href="{%url 'home'%}">Home</a></li>
-              
-                <li class="breadcrumb-item active" aria-current="page"> Contact</li>
-              
-            </ol>
-        </nav>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+      {{ message }}
     </div>
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" role="alert">
-          {{ message }}
-        </div>
-        {% endfor %}
+    {% endfor %}
     {% endif %}
-        <form class="row g-3" method="POST" id="contactform">
-            {% csrf_token %}
-        {% if form_contact.errors.message %}
-        <div class="alert alert-danger" role="alert">
-            {{form_contact.errors.message}}
+    <div class="shadow-none p-2 mb-3 bg-secondary text-white rounded  ">
+      <h3>Contact</h3>
+    </div>
+    <div class="shadow p-5 mb-5"> 
+    <form class="row g-3" method="POST" id="contactform">
+      {% csrf_token %}
+      {% if form_contact.errors.message %}
+      <div class="alert alert-danger" role="alert">
+        {{form_contact.errors.message}}
+      </div>
+      {% endif %}
+
+      <div class="col-md-6">
+        <label for="inputfirstname4" class="form-label">First name</label>
+        {{form_contact.first_name}}
+      </div>
+      <div class="col-md-6">
+        <label for="inputlastname4" class="form-label">Last name</label>
+        {{form_contact.last_name}}
+      </div>
+      <div class="col-12">
+        <label for="inputEmail" class="form-label">Email</label>
+        {{form_contact.email}}
+      </div>
+      <div class="col-12">
+        <label for="inputmessage2" class="form-label">Message</label>
+        {{form_contact.messages}}
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Check me out
+          </label>
         </div>
-        {% endif %}
+      </div>
 
-            <div class="col-md-6">
-              <label for="inputfirstname4" class="form-label">First name</label>
-              {{form_contact.first_name}}
-            </div>
-            <div class="col-md-6">
-              <label for="inputlastname4" class="form-label">Last name</label>
-              {{form_contact.last_name}}
-            </div>
-            <div class="col-12">
-              <label for="inputEmail" class="form-label">Email</label>
-              {{form_contact.email}}
-            </div>
-            <div class="col-12">
-              <label for="inputmessage2" class="form-label">Message</label>
-              {{form_contact.messages}}
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Check me out
-                </label>
-              </div>
-            </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" id="submitContact">Send</button>
+      </div>
+    </form>
+  </div>
+  </div>
+  <div class="col-2">
 
-            <div class="col-12">
-              <button  type="submit" class="btn btn-primary" id="submitContact">Send</button>
-            </div>
-          </form>
-    </div>
-    <div class="col-2">
-
-    </div>
+  </div>
 </div>
 {%endblock %}

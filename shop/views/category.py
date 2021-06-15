@@ -17,13 +17,13 @@ def category(request):
     # sort
     sort = request.GET.get('sort','asc')
     if sort == 'desc':
-       list_product = list_products.order_by('-price')
-    else:
        list_product = list_products.order_by('price')
+    else:
+       list_product = list_products.order_by('-price')
 
     #  pagination
     paginator = Paginator(list_product, 6)
-    page = request.GET.get('page')
+    page = request.GET.get('page',1)
     try:
         list_product = paginator.page(page)
     except PageNotAnInteger:
@@ -50,7 +50,7 @@ def categoryFilter(request,pk):
    
    #  pagination
     paginator = Paginator(list_product, 6)
-    page = request.GET.get('page')
+    page = request.GET.get('page',1)
     try:
         list_product = paginator.page(page)
     except PageNotAnInteger:
@@ -58,13 +58,14 @@ def categoryFilter(request,pk):
     except EmptyPage:
         list_product = paginator.page(paginator.num_pages)
     # pages=list_product.paginator.page_range
-
+ 
     print(page)
     context = {
         'category':category,
         'list_product':list_product,
         'title':title,
         'page':page,
+ 
         # 'counter':counter,
         }
    
