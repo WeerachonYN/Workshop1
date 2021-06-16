@@ -18,9 +18,10 @@ def category(request):
     sort = request.GET.get('sort','asc')
     if sort == 'desc':
        list_product = list_products.order_by('price')
+       text_sort = 'น้อยไปมาก'
     else:
        list_product = list_products.order_by('-price')
-
+       text_sort = 'มากไปน้อย'
     #  pagination
     paginator = Paginator(list_product, 6)
     page = request.GET.get('page',1)
@@ -37,6 +38,7 @@ def category(request):
          'search_post':search_post,
          'sort':sort,
          'page':page,
+         'text_sort':text_sort,
         }
    
     return render(request, 'page/category.html',context)

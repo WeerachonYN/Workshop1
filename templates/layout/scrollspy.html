@@ -12,11 +12,11 @@
       </ul>
       
    
-          <!-- <div class="list-group " id="list-tab" role="tablist" >
+           <!-- <div class="list-group " id="list-tab" role="tablist" >
             {%for i in category%}
-            <a class="list-group-item list-group-item " id="list-home-list"   href="{% url 'category-filter' pk=i.pk%}" role="tab" >{{i}} <span class="badge bg-primary rounded-pill" >{{counter|length}}</span></a>
+            <a class="list-group-item list-group-item " data-bs-toggle="list" id="list-home-list"   href="{% url 'category-filter' pk=i.pk%}" role="tab" >{{i}} <span class="badge bg-primary rounded-pill" >{{i.products.count}}</span></a>
             
             {%endfor%}
-          </div> -->
+          </div> 
      
-       
+        -->

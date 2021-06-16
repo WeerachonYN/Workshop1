@@ -26,7 +26,7 @@ def contact(request):
             contact.save()
             messages.add_message(request, messages.SUCCESS, 'Message sent',"success")
         else:
-            messages.add_message(request, messages.ERROR, 'Recapcha error',"danger")
+            messages.add_message(request, messages.ERROR, 'Recapcha timeout',"danger")
 
         #reset form
         form_contact = ContactForm()
