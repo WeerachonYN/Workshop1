@@ -6,6 +6,7 @@ from shop.forms.contact import ContactForm
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.contrib import messages
+import requests
 
 @csrf_exempt
 def contact(request):
@@ -13,13 +14,20 @@ def contact(request):
     category  =  Category.objects.filter(is_activate = True)
     form_contact = ContactForm()
     if request.method == 'POST':
-        form_contact = ContactForm(request.POST)
-        #check validation
-        if form_contact.is_valid():
-            contact=form_contact.save(commit=False)
-            # contact.user = request.user
-        contact.save()
-        messages.add_message(request, messages.SUCCESS, 'Message sent',"success")
+        payload = {'secret': settings.RECAPTCHA_SECRET_KEY,'response':request.POST['g-recaptcha-response']}
+        respone = requests.post('https://www.google.com/recaptcha/api/siteverify',payload)
+        if respone.json()['success']:
+            form_contact = ContactForm(request.POST)
+        
+            #check validation
+            if form_contact.is_valid():
+                contact=form_contact.save(commit=False)
+            
+            contact.save()
+            messages.add_message(request, messages.SUCCESS, 'Message sent',"success")
+        else:
+            messages.add_message(request, messages.ERROR, 'Recapcha error',"danger")
+
         #reset form
         form_contact = ContactForm()
 

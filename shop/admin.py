@@ -57,7 +57,7 @@ class ContactAdmin(admin.ModelAdmin):
         'user',
         'is_enabled'
     )
-    list_per_page=6
+    list_per_page=10
 admin.site.register(Contact,ContactAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):

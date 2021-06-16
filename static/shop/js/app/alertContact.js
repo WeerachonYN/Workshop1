@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#submitContact").click(function(){
-      alert("The paragraph was clicked.");
-    });
+  $("#submitContact").click(function(){
+    alert('Message sent');
   });
+});

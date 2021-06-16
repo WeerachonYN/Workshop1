@@ -3,7 +3,7 @@
 {%block title_page %}Contact - METRO STORE{%endblock%}
 {%block content%}
 
-<!-- {%include 'layout/slider.html'%} -->
+
 <div class="row">
   <div class="col-2">
 
@@ -33,6 +33,9 @@
     <div class="shadow p-5 mb-5"> 
     <form class="row g-3" method="POST" id="contactform">
       {% csrf_token %}
+     
+        <input type="hidden" id="input-hidden">
+    
       {% if form_contact.errors.message %}
       <div class="alert alert-danger" role="alert">
         {{form_contact.errors.message}}
@@ -65,7 +68,13 @@
       </div>
 
       <div class="col-12">
-        <button type="submit" class="btn btn-primary" id="submitContact">Send</button>
+        <!-- <button type="submit" class="btn btn-primary" id="submitContact" data-toggle="modal" data-target="#myModal">Send</button> -->
+        <button type="submit" class="g-recaptcha btn btn-primary" 
+        data-sitekey="6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm" 
+        data-callback='onSubmit' 
+        data-action='submit'>
+         Send
+        </button>
       </div>
     </form>
   </div>
@@ -73,5 +82,16 @@
   <div class="col-2">
 
   </div>
+  {%include 'layout/modal.html'%}
 </div>
+<script>
+  function onSubmit(token) {
+    console.log(token)
+    // document.getElementById("input-hidden").value(token)
+    // document.getElementById("contactform").submit();
+    $('#input-hidden').val(token)
+    $('#contactform').submit()
+  }
+</script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm"></script>
 {%endblock %}

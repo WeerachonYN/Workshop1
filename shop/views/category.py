@@ -58,8 +58,7 @@ def categoryFilter(request,pk):
     except EmptyPage:
         list_product = paginator.page(paginator.num_pages)
     # pages=list_product.paginator.page_range
- 
-    print(page)
+   
     context = {
         'category':category,
         'list_product':list_product,
