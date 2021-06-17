@@ -26,6 +26,10 @@ from shop.views.product import product
 from shop.views.contact import contact
 from shop.views.about import about
 
+from shop.views.users.signouts import signouts
+from shop.views.users.signins import signInView
+from shop.views.users.signups import signupView
+
 urlpatterns = [
 
     path('admin/', admin.site.urls),
@@ -37,5 +41,12 @@ urlpatterns = [
     path('product/<int:cat_id>/<int:pk>',product,name='product'),
     path('contact',contact,name='contact'),
     path('about',about,name='about'),
+
+    #user
+    path('signout', signouts, name="signout"),
+    path('signup', signupView, name='signup'),
+    path('signIn', signInView, name='signIn'),   
+
 ]   
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

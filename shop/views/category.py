@@ -8,19 +8,22 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def category(request):
     category  =  Category.objects.filter(is_activate = True)
-    list_products = Product.objects.filter(is_activate = True )
-    
+    list_product = Product.objects.filter(is_activate = True )
+    counters = None
     # search  
     search_post = request.GET.get('search','')
     if search_post:
-        list_products = list_products.filter(Q(name__icontains=search_post))
+        list_product = list_product.filter(Q(name__icontains=search_post))
+        counters = list_product.count()
+  
+       
     # sort
-    sort = request.GET.get('sort','asc')
+    sort = request.GET.get('sort','desc')
     if sort == 'desc':
-       list_product = list_products.order_by('price')
+       list_product = list_product.order_by('price')
        text_sort = 'น้อยไปมาก'
     else:
-       list_product = list_products.order_by('-price')
+       list_product = list_product.order_by('-price')
        text_sort = 'มากไปน้อย'
     #  pagination
     paginator = Paginator(list_product, 6)
@@ -39,6 +42,9 @@ def category(request):
          'sort':sort,
          'page':page,
          'text_sort':text_sort,
+         'counters':counters,
+     
+
         }
    
     return render(request, 'page/category.html',context)
@@ -47,10 +53,16 @@ def categoryFilter(request,pk):
     category = Category.objects.filter(is_activate=True)
     list_product = Product.objects.filter(is_activate = True ).filter(category = pk)
     title  =  category.get(pk=pk)
-    pk_id = pk
-
+    counters = None
+      # search  
+    search_post = request.GET.get('search','')
+        
+    if search_post:
+        list_product = list_product.filter(Q(name__icontains=search_post))
+        counters = list_product.count()
+    
     #sort
-    sort = request.GET.get('sort','asc')
+    sort = request.GET.get('sort','desc')
     if sort == 'desc':
        list_product = list_product.order_by('price')
        text_sort = 'น้อยไปมาก'
@@ -67,15 +79,17 @@ def categoryFilter(request,pk):
     except EmptyPage:
         list_product = paginator.page(paginator.num_pages)
     # pages=list_product.paginator.page_range
-   
+  
     context = {
         'category':category,
         'list_product':list_product,
         'title':title,
         'page':page,
-        'pk':pk,
- 
-        # 'counter':counter,
+        'search_post':search_post,
+        'text_sort':text_sort,
+        'counters':counters,
+       
+    
         }
    
     return render(request, 'page/category.html',context)

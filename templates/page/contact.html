@@ -22,11 +22,12 @@
     </div>
     {% if messages %}
     {% for message in messages %}
-    <div class="alert  alert-dismissible fade show alert-{{ message.tags }}" role="alert">
+    <div class="alert  alert-dismissible alert-{{ message.tags }}" role="alert">
       {{ message }}
     </div>
     {% endfor %}
     {% endif %}
+
     <div class="shadow-none p-2 mb-3 bg-secondary text-white rounded  ">
       <h3>Contact</h3>
     </div>
@@ -36,15 +37,14 @@
      
         <input type="hidden" id="input-hidden">
     
-      {% if form_contact.errors.message %}
-      <div class="alert alert-danger" role="alert">
-        {{form_contact.errors.message}}
-      </div>
-      {% endif %}
 
       <div class="col-md-6">
+
+
         <label for="inputfirstname4" class="form-label">First name</label>
         {{form_contact.first_name}}
+
+        
       </div>
       <div class="col-md-6">
         <label for="inputlastname4" class="form-label">Last name</label>
@@ -69,7 +69,7 @@
 
       <div class="col-12">
         <!-- <button type="submit" class="btn btn-primary" id="submitContact" data-toggle="modal" data-target="#myModal">Send</button> -->
-        <button type="submit" class="g-recaptcha btn btn-primary" 
+        <button type="submit" class="g-recaptcha btn btn-outline-dark" 
         data-sitekey="6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm" 
         data-callback='onSubmit' 
         data-action='submit'>

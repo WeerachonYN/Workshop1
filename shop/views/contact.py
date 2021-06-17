@@ -23,9 +23,12 @@ def contact(request):
             if form_contact.is_valid():
                 print('validated')
                 contact=form_contact.save(commit=False)
-            
+
                 contact.save()
-            messages.add_message(request, messages.SUCCESS, 'Message sent',"success")
+                messages.add_message(request, messages.SUCCESS, 'Message sent',"success")
+            else:
+                 messages.add_message(request, messages.ERROR, 'กรุณากรอกให้ครบ',"warning")
+            
         else:
             messages.add_message(request, messages.ERROR, 'Recapcha timeout',"danger")
 

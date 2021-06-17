@@ -31,8 +31,9 @@
             </div>
 
             <div class="row justify-content-between ">
-                <div class="col-4 p-3">
-                    {%if search_post %} ค้นหา: {{search_post}} {%endif%}
+                <div class="col-4 ">
+                  {%if search_post %} <p> ค้นหา: {{search_post}} </p>  {%endif%}
+                  {%if counters %} <p>ผลการค้นหา: {{counters}} รายการ</p> {%endif%}
                 </div>
                 <div class="col-4 p-3" style="text-align: end;">
                     {%include "page/include/sort.html"%}
@@ -41,7 +42,7 @@
             <!-- Tab panes -->
            
                     {%if list_product %}
-                    {%include "page/include/list.html"%} {%else%}<h1>ไม่พบคำที่ค้นหา...</h1>
+                    {%include "page/include/list.html"%} {%else%}<h1>ไม่พบคำที่ค้นหา {{search_post}} {%if title%}ในหมวดหมู่ {{title}}{%endif%}</h1>
                     {%endif%} 
              
          

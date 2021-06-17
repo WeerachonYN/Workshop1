@@ -46,6 +46,7 @@
 /* body  */
 .container-content{
     min-height:50em;
+    margin-bottom: 2%;
   }
 
   .footer{
@@ -58,7 +59,11 @@
     margin-bottom: 0px; */
     text-align: center;
   }
+/* pagination */
+#pagination{
+  padding-top: 2%;
 
+}
 /* .image_card{
   height: 100px;
 } */
@@ -68,4 +73,11 @@
 }
 #tage-a{
   text-decoration:none;
+  color: black;
+}
+
+/* a category all index */
+#tage-atitle{
+  text-decoration:none;
+  color: black;
 }

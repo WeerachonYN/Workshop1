@@ -1,8 +1,8 @@
-<nav style="padding-top: 2%;" aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
+<nav  aria-label="Page navigation example" id="pagination">
+    <ul class="pagination  justify-content-center">
         {% if list_product.has_previous %}
         
-        <li class="page-item ">
+        <li class="page-item  ">
             <a class="page-link" href="?page={{list_product.previous_page_number}}">Previous</a>
         </li>
         {% endif %}
@@ -11,7 +11,7 @@
                 href="?page={{i}}">{{i}}</a></li>
         {% endfor %}
         {% if list_product.has_next%}
-        <li class="page-item">
+        <li class="page-item ">
             <a class="page-link" href="?page={{list_product.next_page_number}}">Next</a>
         </li>
         {% endif %}

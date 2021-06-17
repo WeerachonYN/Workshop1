@@ -9,10 +9,11 @@
 
     </div>
     <div class="col-8">
-
+        <div class="contaier">
+            <a id="tage-a" href="{% url 'category-list'%}">
         <div class="shadow p-2 mb-3 bg-dark text-white rounded  ">
-            <h3>Category All</h3>
-        </div>
+        <h3>Category All</h3>
+        </div></a>
 
         <div class="row mb-4 row-cols-1  row-cols-md-3  row-cols-lg-4 g-4">
 
@@ -21,13 +22,13 @@
             <!-- Tab panes -->
 
             <div class="col">
-                <div class="card h-100" style="width: 18rem;">
-                    <img src="{{list.image.url}}" class="card-img-top " id="image_card">
+                <div class="card h-100" >
+                   <a href="{% url 'category-filter' pk=list.pk%}"> <img src="{{list.image.url}}" class="card-img-top " id="image_card"></a>
                     <div class="card-body">
                         <!-- <h5 class="card-title">{{list.price}} บาท</h5> -->
-                        <h5 class="card-title">{{list.name}}</h5>
+                        <a id="tage-a" href="{% url 'category-filter' pk=list.pk%}"><h5 class="card-title">{{list.name}}</h5></a>
                         <p class="card-text">{{list.detail}}</p>
-                        <a href="{% url 'category-filter' pk=list.pk%}" class="btn btn-md btn-primary">View</a>
+                        <a href="{% url 'category-filter' pk=list.pk%}" class="btn btn-md btn-outline-dark">View</a>
                     </div>
                     <!-- <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -37,11 +38,12 @@
 
             {%endfor%}
         </div>
+        </div>
 <!-- Recomment -->
         <div class="shadow p-2 mb-3 bg-warning text-white rounded  ">
             <h3>Product Recomment</h3>
         </div>
-            {%include 'page/include/list.html'%}
+            {%include 'page/include/recomment.html'%}
 
     </div>
     <div class="col-2"></div>
