@@ -1,16 +1,21 @@
 <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-        data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
         เรียงจาก : {{text_sort}}
     </a>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <li><a class="dropdown-item" href="{%url 'category-list' %}?page={{page}}&search={{search_post}}&sort=desc">น้อยไปมาก</a>
+        <li><a class="dropdown-item" {%if pk%}
+                href="{%url 'category-filter' pk=pk %}?page={{page}}&search={{search_post}}&sort=desc" {%else%}
+                href="{%url 'category-list' %}?page={{page}}&search={{search_post}}&sort=desc" {%endif%}>น้อยไปมาก</a>
         </li>
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="{%url 'category-list' %}?page={{page}}&search={{search_post}}&sort=asc">มากไปน้อย</a></li>
+        <li><a class="dropdown-item" {%if pk%}
+                href="{%url 'category-filter' pk=pk %}?page={{page}}&search={{search_post}}&sort=asc" {%else%}
+                href="{%url 'category-list' %}?page={{page}}&search={{search_post}}&sort=asc" {%endif%}>มากไปน้อย </a>
+        </li>
 
     </ul>
 </div>

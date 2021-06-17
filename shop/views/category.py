@@ -47,9 +47,16 @@ def categoryFilter(request,pk):
     category = Category.objects.filter(is_activate=True)
     list_product = Product.objects.filter(is_activate = True ).filter(category = pk)
     title  =  category.get(pk=pk)
-    # counter = Product.objects.filter(is_activate=True).filter()
-    # (category__id=category)
-   
+    pk_id = pk
+
+    #sort
+    sort = request.GET.get('sort','asc')
+    if sort == 'desc':
+       list_product = list_product.order_by('price')
+       text_sort = 'น้อยไปมาก'
+    else:
+       list_product = list_product.order_by('-price')
+       text_sort = 'มากไปน้อย'
    #  pagination
     paginator = Paginator(list_product, 6)
     page = request.GET.get('page',1)
@@ -66,6 +73,7 @@ def categoryFilter(request,pk):
         'list_product':list_product,
         'title':title,
         'page':page,
+        'pk':pk,
  
         # 'counter':counter,
         }
