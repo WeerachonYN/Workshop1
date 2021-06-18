@@ -7,9 +7,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.contrib import messages
 import requests
-
+from shop.models.ImageUser import ImageUser
 @csrf_exempt
 def contact(request):
+    imageview = None
+    if request.user.is_authenticated:
+         imageview =  ImageUser.objects.get(user=request.user)
+    print(imageview.images)
     contacts  =  Contact.objects.filter(is_enabled=True)
     category  =  Category.objects.filter(is_activate = True)
     form_contact = ContactForm()
@@ -27,7 +31,7 @@ def contact(request):
                 contact.save()
                 messages.add_message(request, messages.SUCCESS, 'Message sent',"success")
             else:
-                 messages.add_message(request, messages.ERROR, 'กรุณากรอกให้ครบ',"warning")
+                 messages.add_message(request, messages.ERROR, 'กรุณากรอกให้ครบ','warning')
             
         else:
             messages.add_message(request, messages.ERROR, 'Recapcha timeout',"danger")
@@ -36,9 +40,10 @@ def contact(request):
         form_contact = ContactForm()
 
     context = {
+    
         'contacts':contacts,
         'category':category,
         'form_contact':form_contact,
-        'site_key': settings.RECAPTCHA_SITE_KEY,
+        'imageview':imageview,
     }
     return render(request, 'page/contact.html',context)

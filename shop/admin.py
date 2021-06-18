@@ -4,6 +4,8 @@ from shop.models.Product import Product
 from shop.models.Category import Category
 from shop.models.Contact import Contact
 from shop.models.ImageProduct import ImageProduct
+from shop.models.Comment import Comment
+from shop.models.ImageUser import ImageUser
 # Register your models here.
 class ImageProductAdmins(admin.StackedInline):
     model = ImageProduct
@@ -94,3 +96,23 @@ class ImageProductAdmin(admin.ModelAdmin):
     )
     list_per_page=10
 admin.site.register(ImageProduct,ImageProductAdmin)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = (
+        'product',
+        'datetime',
+        'is_activate'
+    )
+    list_editable = (
+        'is_activate',
+    )
+    list_filter = (
+        'product',
+        'is_activate'
+    )
+admin.site.register(Comment,CommentAdmin)
+
+class ImageUserAdmin(admin.ModelAdmin):
+    pass
+   
+admin.site.register(ImageUser,ImageUserAdmin)

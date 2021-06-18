@@ -3,10 +3,11 @@
 {%block content%}
 <!-- {%include 'layout/slider.html'%} -->
 
+
 <div class="row mt-5">
     <div class="col-2">
 
-
+        
     </div>
     <div class="col-8">
         <div class="contaier">
@@ -22,18 +23,22 @@
             <!-- Tab panes -->
 
             <div class="col">
-                <div class="card h-100" >
-                   <a href="{% url 'category-filter' pk=list.pk%}"> <img src="{{list.image.url}}" class="card-img-top " id="image_card"></a>
-                    <div class="card-body">
+               
+                <div class="card h-100 " >
+                   
+                       <img src="{{list.image.url}}" class="w-100 "   id="image_card">
+                    <a href="{% url 'category-filter' pk=list.pk%}"> 
+                    <div class="card-img-overlay overlay text-white ">
                         <!-- <h5 class="card-title">{{list.price}} บาท</h5> -->
-                        <a id="tage-a" href="{% url 'category-filter' pk=list.pk%}"><h5 class="card-title">{{list.name}}</h5></a>
-                        <p class="card-text">{{list.detail}}</p>
-                        <a href="{% url 'category-filter' pk=list.pk%}" class="btn btn-md btn-outline-dark">View</a>
-                    </div>
+                        <a id="tage-a" href="{% url 'category-filter' pk=list.pk%}"><h1 class="card-text text-white ">{{list.name}}</h1></a>
+                        
+                      
+                    </div></a>
                     <!-- <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div> -->
                 </div>
+           
             </div>
 
             {%endfor%}

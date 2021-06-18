@@ -1,48 +1,50 @@
+{%extends  'layout/base.html'%}
+{%block title_page %}Sign In - METRO STORE{%endblock%}
 
-<div class="modal fade" id="Modal_signin" tabindex="-1" aria-labelledby="Modal_signin" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h5 class="modal-title" id="Modal_signin">Sign In</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+{%block content%}
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+
+
+      <div class="shadow-none p-2 mb-3 bg-primary text-white rounded  ">
+        <h3 style="text-align: center;">Sign In</h3>
       </div>
-      <div class="modal-body">
-        <form method="POST">
+      <div class="shadow p-5 mb-5"> 
+      <form method="POST">
           
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            {{form_signIn.username}}
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            {{form_signIn.password}}
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-         
-  
-          <div class="mb-3"style="padding: auto;">
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert  alert-{{ message.tags }}" role="alert">
-              {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
-          </div>
-  
-        
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          {{form_signIn.username}}
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          {{form_signIn.password}}
+        </div>
        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" type="submit" class="btn btn-primary">Submit</button>
-      </form>
+       
+
+        <div class="mb-3"style="padding: auto;">
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert  alert-{{ message.tags }}" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+        <button type="submit" class="g-recaptcha btn btn-outline-dark" 
+        data-sitekey="6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm" 
+        data-callback='onSubmit' 
+        data-action='submit'>
+         Send
+        </button>
+    </form>
       </div>
     </div>
+    <div class="col-3"></div>
   </div>
-</div>
+        
+      {%endblock%}
+

@@ -7,7 +7,7 @@
   <div class="carousel-inner ">
     {% for i in images %}
     <div class="carousel-item  {% if forloop.counter0 == 0 %} active {% endif %}">
-      <img src="{{i.images.url }}" class="d-block w-100 ">
+      <img src="{{i.images.url }}" class="img-fluid">
     </div>
     {%endfor%}
   </div>

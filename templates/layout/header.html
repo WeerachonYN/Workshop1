@@ -35,7 +35,12 @@
         <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">About</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" {%if pk%} {%if search_post%}action="{%url 'category-filter' pk=pk %}?page={{page}}&sort={{sort}}" {%else%} action="{%url 'category-list' %}?page={{page}}&sort={{sort}}"{%endif%}{%endif%}>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" 
+      {%if pk%} 
+            action="{%url 'category-filter' pk=pk %}?page={{page}}&sort={{sort}}" 
+      {%else%} 
+            action="{%url 'category-list' %}?page={{page}}&sort={{sort}}"
+      {%endif%}>
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="search">
        
       </form>
@@ -43,29 +48,33 @@
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            {%if user.is_authenticated%}
+               
+                <img src="{{imageview.images.url}}" alt="mdo" width="32" height="32" class="rounded-circle">
+              
+            {%else%}
+            <i class="fas fa-user"></i>
+            {%endif%}
+          
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             {% if user.is_authenticated %}
   
-            <li><a class="dropdown-item" href="#">{{user.username}}</a></li>
+            <li><a class="dropdown-item" {%if user.is_superuser%} href="admin"{%else%}href="#"{%endif%}>{{user.username}}</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="{%url 'signout'%}">Sign out</a></li>
             {%else%}
-            <li><button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal"
-                data-bs-target="#Modal_signin" >
-                SignIn
-              </button></li>
+            <li>
+              <a class="dropdown-item" href="{%url 'signin'%}">SignIn</a>  
+              </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li>
-              <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" 
-              data-bs-target="#Modal_signup" >
-              SignUp
-            </button></li>
+              <a class="dropdown-item" href="{%url 'signup'%}"> SignUp</a>
+           </li>
             {%endif%}
           </ul>
         </div>
@@ -75,10 +84,4 @@
   </div>
 </header>
 
-{%include 'page/include/signin.html'%}
-{%include 'page/include/signup.html'%}
-<!-- <script>
-  $('.btn').click(function() {
-  $(#)
-});
-</script> -->
+

@@ -4,9 +4,14 @@ from shop.models.Category import Category
 from shop.models.Product import Product
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from shop.models.ImageUser import ImageUser
 
 
 def category(request):
+    imageview = None
+    if request.user.is_authenticated:
+         imageview =  ImageUser.objects.get(user=request.user)
+    print(imageview.images)
     category  =  Category.objects.filter(is_activate = True)
     list_product = Product.objects.filter(is_activate = True )
     counters = None
@@ -42,7 +47,7 @@ def category(request):
          'sort':sort,
          'page':page,
          'text_sort':text_sort,
-         'counters':counters,
+            'imageview':imageview,
      
 
         }
@@ -50,6 +55,10 @@ def category(request):
     return render(request, 'page/category.html',context)
 
 def categoryFilter(request,pk):
+    imageview = None
+    if request.user.is_authenticated:
+         imageview =  ImageUser.objects.get(user=request.user)
+    print(imageview.images)
     category = Category.objects.filter(is_activate=True)
     list_product = Product.objects.filter(is_activate = True ).filter(category = pk)
     title  =  category.get(pk=pk)
@@ -71,7 +80,7 @@ def categoryFilter(request,pk):
        text_sort = 'มากไปน้อย'
    #  pagination
     paginator = Paginator(list_product, 6)
-    page = request.GET.get('page',1)
+    page = request.GET.get('page','1')
     try:
         list_product = paginator.page(page)
     except PageNotAnInteger:
@@ -81,14 +90,16 @@ def categoryFilter(request,pk):
     # pages=list_product.paginator.page_range
   
     context = {
+    
         'category':category,
         'list_product':list_product,
         'title':title,
         'page':page,
         'search_post':search_post,
         'text_sort':text_sort,
-        'counters':counters,
-       
+         'sort':sort,
+         'pk':pk,
+        'imageview':imageview,
     
         }
    

@@ -8,4 +8,4 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 def signouts(request):
     logout(request)
     messages.info(request, "Logged out Successfully!")
-    return redirect("home")
+    return redirect("signin")

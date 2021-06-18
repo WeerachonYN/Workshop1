@@ -29,10 +29,11 @@ from shop.views.about import about
 from shop.views.users.signouts import signouts
 from shop.views.users.signins import signInView
 from shop.views.users.signups import signupView
+# from shop.views.users.profile import profile
 
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,name='admin'),
     # page
     path('',homepage,name = 'home'),
     path('category',category,name='category-list'),
@@ -45,7 +46,9 @@ urlpatterns = [
     #user
     path('signout', signouts, name="signout"),
     path('signup', signupView, name='signup'),
-    path('signIn', signInView, name='signIn'),   
+    path('signIn', signInView, name='signin'),   
+    
+    # path('profile',profile, name="profile"),
 
 ]   
 

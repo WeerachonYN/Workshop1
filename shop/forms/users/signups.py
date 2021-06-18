@@ -1,9 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from shop.models.ImageUser import ImageUser
 from django import forms
 
 class SignupForm(UserCreationForm):
-
+    
     password1 = forms.CharField(required=True,widget=forms.TextInput(attrs={'class': 'form-control','type': 'password'}))
     password2 = forms.CharField(required=True,widget=forms.TextInput(attrs={'class': 'form-control','type': 'password'}))
     email = forms.EmailField(max_length=254, required=True,widget=forms.TextInput(attrs={'class': 'form-control','type':'email'}))
@@ -19,4 +20,15 @@ class SignupForm(UserCreationForm):
 
         self.fields['username'].widget.attrs.update({'class': 'form-control'})
 
-                                
+class ImageUserForm(forms.ModelForm):
+    images = forms.ImageField()
+    class Meta:
+        model = ImageUser
+        fields =['images']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['images'].widget.attrs.update({'class': 'form-control'})
+
+    
+  

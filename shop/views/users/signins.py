@@ -6,8 +6,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from shop.forms.users.signins import SignInForm
+from shop.models.Category import Category
+
 
 def signInView(request):
+
+    category  =  Category.objects.filter(is_activate = True)
     form_signIn = SignInForm()
     if request.method=="POST":
 
@@ -16,7 +20,7 @@ def signInView(request):
         #check validation
         if form_signIn.is_valid():
 
-        # form_signIn.save()
+       
         # check login
             username = form_signIn.cleaned_data['username']
             password = form_signIn.cleaned_data['password']
@@ -32,6 +36,8 @@ def signInView(request):
                 messages.add_message(request,messages.ERROR,'Wrong password!',"danger")
     
     context = {
+   
+        'category':category,
         'form_signIn' : form_signIn
     }
 
