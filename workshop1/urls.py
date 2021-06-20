@@ -29,7 +29,7 @@ from shop.views.about import about
 from shop.views.users.signouts import signouts
 from shop.views.users.signins import signInView
 from shop.views.users.signups import signupView
-# from shop.views.users.profile import profile
+from shop.views.users.profile import profileViews
 
 urlpatterns = [
 
@@ -42,11 +42,13 @@ urlpatterns = [
     path('product/<int:cat_id>/<int:pk>',product,name='product'),
     path('contact',contact,name='contact'),
     path('about',about,name='about'),
+    
 
-    #user
+    #authentication
     path('signout', signouts, name="signout"),
     path('signup', signupView, name='signup'),
     path('signIn', signInView, name='signin'),   
+    path('profile',profileViews,name='profile')
     
     # path('profile',profile, name="profile"),
 

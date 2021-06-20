@@ -28,7 +28,7 @@ class ImageUserForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['images'].widget.attrs.update({'class': 'form-control'})
+        self.fields['images'].widget.attrs.update({'class': 'form-control form-control-sm',})
 
     
   

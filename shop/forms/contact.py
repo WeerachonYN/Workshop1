@@ -8,7 +8,7 @@ class ContactForm(ModelForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     messages = forms.CharField(max_length=255,required=True)
-    
+    # recaptcha_token
     class Meta:
         model = Contact
         fields = ['email','first_name','last_name','messages']

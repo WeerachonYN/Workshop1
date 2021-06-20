@@ -24,7 +24,7 @@
               <li>
                 <hr class="dropdown-divider">
             </li>
-              {%for i in category %}
+              {%for i in base.category %}
               <li><a class="dropdown-item " href="{% url 'category-filter' pk=i.pk%}">{{i.name}}</a></li>
               {% endfor %}
              
@@ -48,9 +48,9 @@
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            {%if user.is_authenticated%}
-               
-                <img src="{{imageview.images.url}}" alt="mdo" width="32" height="32" class="rounded-circle">
+            {%if user.is_authenticated and base.imageview%}
+
+                <img src="{{base.imageview.images.thumbnail.50x50}}" alt="mdo" width="32" height="32" class="rounded-circle">
               
             {%else%}
             <i class="fas fa-user"></i>
@@ -60,7 +60,7 @@
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             {% if user.is_authenticated %}
   
-            <li><a class="dropdown-item" {%if user.is_superuser%} href="admin"{%else%}href="#"{%endif%}>{{user.username}}</a></li>
+            <li><a class="dropdown-item" {%if user.is_superuser%} href="admin"{%else%}href="{%url 'profile'%}"{%endif%}>{{user.username}}</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>

@@ -4,29 +4,23 @@ from shop.models.Product import Product
 from shop.models.Category import Category
 from shop.models.ImageProduct import ImageProduct
 from shop.forms.comment import CommentForm
-from shop.models.ImageUser import ImageUser
 
-def product(request,pk,cat_id):
-    imageview = None
-    if request.user.is_authenticated:
-         imageview =  ImageUser.objects.get(user=request.user)
-    print(imageview.images)
-    products  =  Product.objects.get(pk=pk,is_activate=True)
+
+
+def product(request, pk, cat_id):
+    products = Product.objects.get(pk=pk, is_activate=True)
     images = ImageProduct.objects.filter(product=pk,)
-    category  =  Category.objects.filter(is_activate = True)
-    title  =  category.get(name=products.category)
-    recomment = Product.objects.filter(is_activate=True).filter(is_recomment=True).order_by('price')
-    # link_breadcromb = category.filter(pk = pk.category)
-
-
-    #comment
+    category = Category.objects.filter(is_activate=True)
+    title = category.get(name=products.category)
+    recomment = Product.objects.filter(is_activate=True).filter(
+        is_recomment=True).order_by('price')
+    # comment
     form_comment = CommentForm()
-        # Submit Comment
+    # Submit Comment
     if request.method == "POST":
-
         form_comment = CommentForm(request.POST)
-        
-        # Check validation 
+
+        # Check validation
         if form_comment.is_valid():
             comment = form_comment.save(commit=False)
 
@@ -38,18 +32,16 @@ def product(request,pk,cat_id):
             comment.product = products
             comment.save()
 
-            # Reset CommentForm
+        # Reset CommentForm
             form_comment = CommentForm()
     context = {
-  
-        'products':products,
-        'category':category,
-        'images':images,
-        'title':title,
-        'list_product':recomment,
-        'form_comment':form_comment,
-        'imageview':imageview,
-    }
-    # print(link_breadcromb)
 
-    return render(request, 'page/product.html',context)
+        'products': products,
+        'category': category,
+        'images': images,
+        'title': title,
+        'list_product': recomment,
+        'form_comment': form_comment,
+    }
+
+    return render(request, 'page/product.html', context)

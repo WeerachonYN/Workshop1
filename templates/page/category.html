@@ -4,31 +4,30 @@
 {%if title%}{{title.name}} - METRO STORE {%else%} ProductAll - METRO STORE {%endif%}
 {%endblock%}
 {%block content%}
-
+<div class="shadow-none p-2 mb-2 bg-light rounded">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a id="tage-a"
+                    href="{%url 'home'%}">Home</a></li>
+            {%if title%}
+           
+            <li class="breadcrumb-item active" aria-current="page"> {{title.name}}</li>
+   
+            {%else%}
+            <li class="breadcrumb-item active" aria-current="page"> Product All</li>
+            {%endif%}
+        </ol>
+    </nav>
+</div>
 <div class="row">
-    <div class="col-lg-2 md-3 sm-12">
-        <h2>Category</h2>
-        {%include 'layout/scrollspy.html' %}
+    <div class="col-lg-1 md-3 sm-12">
+   
 
     </div>
-    <div class="col-lg-8 md-3 sm-2">
+    <div class="col-lg-9 md-3 sm-2">
         <div class="container">
 
-            <div class="shadow-none p-2 mb-2 bg-light rounded">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a id="tage-a"
-                                href="{%url 'home'%}">Home</a></li>
-                        {%if title%}
-                       
-                        <li class="breadcrumb-item active" aria-current="page"> {{title.name}}</li>
-               
-                        {%else%}
-                        <li class="breadcrumb-item active" aria-current="page"> Product All</li>
-                        {%endif%}
-                    </ol>
-                </nav>
-            </div>
+           
 
             <div class="row justify-content-between ">
                 <div class="col-4 ">
@@ -50,11 +49,20 @@
     </div>
 <div class="col-lg-2 md-3 sm-12">
    
-
+    <h2>Category</h2>
+    {%include 'page/include/scrollspy.html' %}
 </div>
 <div class="container">
-    {%include 'layout/pagination.html'%}
+    {%include 'page/include/pagination.html'%}
 </div>
 </div>
-<!-- {%include 'layout/slider.html'%} -->
+
+<script>
+    function onSubmit(token) {
+      $('#recaptcha_token').val(token)
+      $('#contactform').submit()
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm"></script>
+
 {%endblock %}

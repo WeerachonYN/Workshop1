@@ -3,23 +3,28 @@
     <h3>Comment</h3>
 </div>
 
-<form method="POST">
+<form method="POST" id="productform">
     {% csrf_token %}
-    {% if form_comment.errors.message %}
-    <div class="alert alert-danger" role="alert">
-        {{form_comment.errors.message}}
-    </div>
-    {% endif %}
+    <!-- <input type="hidden" id="recaptcha_token" name="recaptcha_token_product"> -->
+    
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Name</label>
        {{form_comment.name}}
+       {%if form_comment.errors.name%}
+       <small class="text-danger">
+         {{form_comment.errors.name}}</small>{%endif%}
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
         {{form_comment.message}}
+        {%if form_comment.errors.message%}
+        <small class="text-danger">
+          {{form_comment.errors.message}}</small>{%endif%}
     </div>
  
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-    <button class="btn btn-primary me-md-2" type="submit">Submit</button>
+    <button class="btn g-recaptcha btn-primary me-md-2" type="submit" data-sitekey="6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm" 
+    data-callback='onSubmit' 
+    data-action='submit'>Submit</button>
     </div>
 </form>
 <hr />
@@ -36,9 +41,3 @@
 </div>
 
 {% endfor %}
-
-<!-- <script>
-$(document).ready(function(){
-    $('#input-1').rating({min: 0, max: 8, step: 0.1, stars: 8});
-});
-</script> -->

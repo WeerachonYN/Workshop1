@@ -1,7 +1,6 @@
 {%extends  'layout/base.html'%}
 {%block title_page %}Home - METRO STORE{%endblock%}
 {%block content%}
-<!-- {%include 'layout/slider.html'%} -->
 
 
 <div class="row mt-5">
@@ -26,7 +25,7 @@
                
                 <div class="card h-100 " >
                    
-                       <img src="{{list.image.url}}" class="w-100 "   id="image_card">
+                       <img src="{{list.image.crop.400x400 }}" class="w-100 "   id="image_card">
                     <a href="{% url 'category-filter' pk=list.pk%}"> 
                     <div class="card-img-overlay overlay text-white ">
                         <!-- <h5 class="card-title">{{list.price}} บาท</h5> -->
@@ -34,9 +33,7 @@
                         
                       
                     </div></a>
-                    <!-- <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div> -->
+   
                 </div>
            
             </div>

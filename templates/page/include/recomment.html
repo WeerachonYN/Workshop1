@@ -4,7 +4,7 @@
     {% for list_product in list_product %}
     <div class="col">
         <div class="card h-100" >
-           <a href="{%url 'product' pk=list_product.pk cat_id=list_product.category.id%}"> <img src="{{list_product.image_pro.url}}" class="card-img-top " id="image_card"></a>
+           <a href="{%url 'product' pk=list_product.pk cat_id=list_product.category.id%}"> <img src="{{list_product.image_pro.crop.400x300}}" class="card-img-top " id="image_card"></a>
             <div class="card-body">
                 <h5 class="card-title">{{list_product.price}} บาท</h5>
               <a id="tage-a" href="{%url 'product' pk=list_product.pk cat_id=list_product.category.id%}"><h5 class="card-title">{{list_product.name}}</h5></a>

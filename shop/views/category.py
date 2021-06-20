@@ -4,15 +4,11 @@ from shop.models.Category import Category
 from shop.models.Product import Product
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from shop.models.ImageUser import ImageUser
+
 
 
 def category(request):
-    imageview = None
-    if request.user.is_authenticated:
-         imageview =  ImageUser.objects.get(user=request.user)
-    print(imageview.images)
-    category  =  Category.objects.filter(is_activate = True)
+
     list_product = Product.objects.filter(is_activate = True )
     counters = None
     # search  
@@ -31,7 +27,7 @@ def category(request):
        list_product = list_product.order_by('-price')
        text_sort = 'มากไปน้อย'
     #  pagination
-    paginator = Paginator(list_product, 6)
+    paginator = Paginator(list_product, 8)
     page = request.GET.get('page',1)
     try:
         list_product = paginator.page(page)
@@ -41,13 +37,13 @@ def category(request):
         list_product = paginator.page(paginator.num_pages)
    
     context = {
-        'category':category,
         'list_product':list_product,
          'search_post':search_post,
          'sort':sort,
          'page':page,
          'text_sort':text_sort,
-            'imageview':imageview,
+     
+            'counters':counters,
      
 
         }
@@ -55,10 +51,8 @@ def category(request):
     return render(request, 'page/category.html',context)
 
 def categoryFilter(request,pk):
-    imageview = None
-    if request.user.is_authenticated:
-         imageview =  ImageUser.objects.get(user=request.user)
-    print(imageview.images)
+ 
+ 
     category = Category.objects.filter(is_activate=True)
     list_product = Product.objects.filter(is_activate = True ).filter(category = pk)
     title  =  category.get(pk=pk)
@@ -79,7 +73,7 @@ def categoryFilter(request,pk):
        list_product = list_product.order_by('-price')
        text_sort = 'มากไปน้อย'
    #  pagination
-    paginator = Paginator(list_product, 6)
+    paginator = Paginator(list_product,8)
     page = request.GET.get('page','1')
     try:
         list_product = paginator.page(page)
@@ -90,8 +84,6 @@ def categoryFilter(request,pk):
     # pages=list_product.paginator.page_range
   
     context = {
-    
-        'category':category,
         'list_product':list_product,
         'title':title,
         'page':page,
@@ -99,8 +91,7 @@ def categoryFilter(request,pk):
         'text_sort':text_sort,
          'sort':sort,
          'pk':pk,
-        'imageview':imageview,
-    
+        'counters':counters,
         }
    
     return render(request, 'page/category.html',context)

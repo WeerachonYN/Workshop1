@@ -6,12 +6,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from shop.forms.users.signins import SignInForm
-from shop.models.Category import Category
+
 
 
 def signInView(request):
-
-    category  =  Category.objects.filter(is_activate = True)
     form_signIn = SignInForm()
     if request.method=="POST":
 
@@ -37,8 +35,8 @@ def signInView(request):
     
     context = {
    
-        'category':category,
+  
         'form_signIn' : form_signIn
     }
 
-    return render(request, 'page/include/signin.html',{'form_signIn' : form_signIn})            
+    return render(request, 'page/auth/signin.html',{'form_signIn' : form_signIn})            

@@ -11,8 +11,8 @@
         <h3 style="text-align: center;">Sign Up</h3>
       </div>
       <div class="shadow p-5 mb-5">
-        <form method="POST" enctype="multipart/form-data">
-
+        <form method="POST" enctype="multipart/form-data" id="signupform">
+          <input type="hidden" id="recaptcha_token" name="recaptcha_token_signUp">
           {% csrf_token %}
           {% if messages %}
           {% for message in messages %}
@@ -21,34 +21,47 @@
           </div>
           {% endfor %}
           {% endif %}
-          {% if form_signup.errors %}
-          <div class="alert alert-danger" role="alert">
-            {{form_signup.errors}}
-          </div>
-          {% endif %}
           <div class="mb-3">
             <label for="exampleInputusername1" class="form-label">Username</label>
             {{form_signup.username}}
+            {%if form_signup.errors.username%}
+            <small class="text-danger">
+              {{form_signup.errors.username}}</small>{%endif%}
           </div>
           <div class="mb-3">
             <label for="exampleInputemail1" class="form-label">Email address</label>
             {{form_signup.email}}
+            {%if form_signup.errors.email%}
+            <small class="text-danger">
+              {{form_signup.errors.email}}</small>{%endif%}
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             {{form_signup.password1}}
+            {%if form_signup.errors.password1%}
+            <small class="text-danger">
+              {{form_signup.errors.password1}}</small>{%endif%}
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword2" class="form-label">Password</label>
             {{form_signup.password2}}
+            {%if form_signup.errors.password2%}
+            <small class="text-danger">
+              {{form_signup.errors.password2}}</small>{%endif%}
           </div>
           <div class="mb-3">
             <label for="exampleInputfirstname" class="form-label">First name</label>
             {{form_signup.first_name}}
+            {%if form_signup.errors.first_name%}
+            <small class="text-danger">
+              {{form_signup.errors.first_name}}</small>{%endif%}
           </div>
           <div class="mb-3">
             <label for="exampleInputlastname" class="form-label">Last name</label>
             {{form_signup.last_name}}
+            {%if form_signup.errors.last_name%}
+            <small class="text-danger">
+              {{form_signup.errors.last_name}}</small>{%endif%}
           </div>
       
           <div class="col">
@@ -58,22 +71,22 @@
             data-action='submit'>
              Comfirm
             </button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
           </div>
          
         </form>
-        {% if img_obj %}
-        <h3>Succesfully uploaded : {{img_obj.image.url}}</h3>
-        <img src="{{ img_obj.images.url}}" alt="connect" style="max-height:300px">
-      {% endif %}
       </div>
     </div>
       </div>
       <div class="col-3"></div>
     </div>
-          
-        {%endblock%}
+    <script>
+      function onSubmit(token) {
+        $('#recaptcha_token').val(token)
+        $('#contactform').submit()
+      }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfbGTQbAAAAAGqaAe-RFikr-2wNIo4tNPynUIXm"></script>
+    {%endblock%}
   
   
 

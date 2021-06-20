@@ -1,6 +1,8 @@
 from django.db import models
 from shop.models.Category import Category
 import datetime
+from versatileimagefield.fields import VersatileImageField
+
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -10,7 +12,7 @@ class Product(models.Model):
 
     is_recomment = models.BooleanField(default=True)
     is_activate = models.BooleanField(default=True)
-    image_pro = models.ImageField(upload_to='images/product',max_length=900, default=None)
+    image_pro = VersatileImageField(max_length=255,upload_to='images/product',default='',blank=True, null=True)
 
     created_datetime = models.DateTimeField(auto_now=True)
     updated_datetime = models.DateTimeField(default=None,null=True)
