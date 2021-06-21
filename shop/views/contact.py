@@ -33,7 +33,7 @@ def contact(request):
 
         #reset form
     # c = Contact.objects.get(pk=1)
-    form_contact = ContactForm()
+    # form_contact = ContactForm()
 
 
     context = {

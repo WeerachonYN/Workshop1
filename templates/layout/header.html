@@ -50,7 +50,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">
             {%if user.is_authenticated and base.imageview%}
 
-                <img src="{{base.imageview.images.thumbnail.50x50}}" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img src="{{base.imageview.images.crop.50x50}}" alt="mdo" width="32" height="32" class="rounded-circle">
               
             {%else%}
             <i class="fas fa-user"></i>
