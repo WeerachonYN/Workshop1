@@ -13,7 +13,7 @@ def product(request, pk, cat_id):
     category = Category.objects.filter(is_activate=True)
     title = category.get(name=products.category)
     recomment = Product.objects.filter(is_activate=True).filter(
-        is_recomment=True).order_by('price')
+        is_recomment=True).order_by('price')[:8]
     # comment
     form_comment = CommentForm()
     # Submit Comment

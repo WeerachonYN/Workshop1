@@ -11,6 +11,7 @@ def category(request):
 
     list_product = Product.objects.filter(is_activate = True )
     counters = None
+    
     # search  
     search_post = request.GET.get('search','')
     if search_post:
